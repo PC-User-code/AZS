@@ -1,0 +1,13 @@
+.serviceBox{
+ border: 1px solid #8a716a;
+ border-radius: 10px;
+ margin-top: 30px;
+ padding: 25px 20px;
+ position: relative;
+}
+
+.serviceBox .description{
+ font-size: 16px;
+ color: #8a716a;
+ line-height: 25px;
+}

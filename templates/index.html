@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+<link rel="stylesheet" href="../static/styles.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+
+
+{% block content %}
+<!-- График -->
+<link type="text/css" rel="StyleSheet" href="https://bootstraptema.ru/plugins/2016/shieldui/style.css"/>
+<script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+<script src="https://bootstraptema.ru/plugins/2016/shieldui/script.js"></script>
+<div id="chart">
+    <table align="center" width="100%">
+        <tr>
+            <td>
+                <script>
+                    $(document).ready(function () {
+                    $("#chart").shieldChart({
+                    theme: "bootstrap",
+                    primaryHeader: {
+                    text: ""
+                    },
+                    seriesSettings: {
+                    area: {
+                    pointMark: {
+                    enabled: true
+                    }
+                    }
+                    },
+                    axisX: {
+                    categoricalValues: {{dates}}
+                    },
+                    dataSeries: [{
+                    seriesType: "area",
+                    collectionAlias: "Ср. температура",
+                    data: {{data}}
+                    }],
+                    events: {
+                    legendSeriesClick: function (e) {
+                    e.preventDefault();
+                    }
+                    }
+                    });
+                    });
+                </script>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- Сводка-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-5">
+          <h2 align="left">Новости</h2>
+          {% for el in news: %}
+            <p>{{el}}</p>
+          {% endfor %}
+        </div>
+        {% for item in temp%}
+        <div class="col">
+            <div class="card border-info">
+                <div class="card-header">{{item[0]}}</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{item[1]}}</h5>
+                    <p class="card-text"><a  class="btn btn-primary" href="/today" role="button">Подробнее</a></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
