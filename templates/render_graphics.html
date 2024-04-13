@@ -7,41 +7,44 @@
 <!-- График -->
 
 <div id="chart">
-<table align="center" width="100%">
- <tr><td>
-    <script>
-     $(document).ready(function () {
-     $("#chart").shieldChart({
-     theme: "bootstrap",
-     primaryHeader: {
-     text: "{{date}}"
-     },
-     seriesSettings: {
-     area: {
-     pointMark: {
-     enabled: true
-     }
-     }
-     },
-     axisX: {
-     categoricalValues: {{dates}}
-     },
-     dataSeries: [{
-     seriesType: "area",
-     collectionAlias: "Ср. температура",
-     data: {{data}}
-     }],
-     events: {
-     legendSeriesClick: function (e) {
-     e.preventDefault();
-     }
-     }
-     });
-     });
-    </script></td>
-</tr></table>
+    <table align="center" width="100%">
+        <tr>
+            <td>
+                <script>
+                    $(document).ready(function () {
+                    $("#chart").shieldChart({
+                    theme: "bootstrap",
+                    primaryHeader: {
+                    text: "{{date}}"
+                    },
+                    seriesSettings: {
+                    area: {
+                    pointMark: {
+                    enabled: true
+                    }
+                    }
+                    },
+                    axisX: {
+                    categoricalValues: {{dates}}
+                    },
+                    dataSeries: [{
+                    seriesType: "area",
+                    collectionAlias: "Ср. температура",
+                    data: {{data}}
+                    }],
+                    events: {
+                    legendSeriesClick: function (e) {
+                    e.preventDefault();
+                    }
+                    }
+                    });
+                    });
+                </script>
+            </td>
+        </tr>
+    </table>
 </div>
 
 
-    <p>Данные представлены за {{date}}</p>
- {% endblock %}
+<p>Данные представлены за {{date}}</p>
+{% endblock %}

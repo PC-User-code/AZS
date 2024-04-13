@@ -8,7 +8,7 @@ from .db_session import SqlAlchemyBase
 class Data(SqlAlchemyBase):
     __tablename__ = 'all_data'
     id_tranzaction = sqlalchemy.Column(sqlalchemy.Integer,
-                           primary_key=True, autoincrement=True)
+                                       primary_key=True, autoincrement=True)
     id_column = sqlalchemy.Column(sqlalchemy.Integer, index=True, nullable=False)
     dt = sqlalchemy.Column(sqlalchemy.String, index=True, nullable=False)
     volume_req = sqlalchemy.Column(sqlalchemy.Integer, nullable=False)
