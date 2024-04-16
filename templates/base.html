@@ -17,7 +17,7 @@
             <header>
                 <nav class="navbar navbar-light bg-light">
                     <a class="navbar-brand" href="/">AZS_rzn</a>
-                    <h4 align="center">{{date}}</h4>
+                    <h4 align="center">{{base_data["date"]}}</h4>
                     {% if current_user.is_authenticated %}
                     <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
                     {% else %}
@@ -31,7 +31,26 @@
         </div>
     </div>
 </div>
+
 <!-- Begin page content -->
 {% block content %}{% endblock %}
+
+<!-- Bottom-->
+</br></br></br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h5>Поддержка</h5>
+            </div>
+            <div class="col-7">
+                <h5><a href='https://t.me/AZS2024_bot'>Мы в телеграм</a></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h6>Увы пока никто не может вам помочь</h6>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

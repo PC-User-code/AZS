@@ -13,6 +13,7 @@
         <tr>
             <td>
                 <script>
+
                     $(document).ready(function () {
                     $("#chart").shieldChart({
                     theme: "bootstrap",
@@ -31,7 +32,7 @@
                     },
                     dataSeries: [{
                     seriesType: "area",
-                    collectionAlias: "Ср. температура",
+                    collectionAlias: "Объем продаж, Л",
                     data: {{data}}
                     }],
                     events: {
@@ -48,21 +49,28 @@
 </div>
 
 <!-- Сводка-->
+<script>$grid-gutter-width: 0.75rem;</script>
 <div class="container-fluid">
     <div class="row">
         <div class="col-5">
-          <h2 align="left">Новости</h2>
-          {% for el in news: %}
+            <h2 align="left">Новости</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            {% for el in news: %}
             <p>{{el}}</p>
-          {% endfor %}
+            {% endfor %}
         </div>
         {% for item in temp%}
         <div class="col">
             <div class="card border-info">
                 <div class="card-header">{{item[0]}}</div>
                 <div class="card-body">
-                    <h5 class="card-title">{{item[1]}}</h5>
-                    <p class="card-text"><a  class="btn btn-primary" href="/today" role="button">Подробнее</a></p>
+                    {% for el in item[1]: %}
+                    <h5 class="card-title">{{el}}</h5>
+                    {% endfor %}
+                    <p class="card-text"><a class="btn btn-primary" href={{item[2]}} role="button">Подробнее</a></p>
                 </div>
             </div>
         </div>

@@ -29,7 +29,7 @@
                     },
                     dataSeries: [{
                     seriesType: "area",
-                    collectionAlias: "Ср. температура",
+                    collectionAlias: "Объем продаж, Л",
                     data: {{data}}
                     }],
                     events: {
@@ -44,7 +44,29 @@
         </tr>
     </table>
 </div>
-
-
-<p>Данные представлены за {{date}}</p>
+<table class="table table-hover">
+    <tr>
+        <td>ID транзакции</td>
+        <td>№ колонки</td>
+        <td>Дата/Время</td>
+        <td>ID пользователя</td>
+        <td>Запрашиваемый обьем, л</td>
+        <td>Выданный обьем, л</td>
+        <td>
+            {% if current_user.is_authenticated and current_user.access > 0 %}
+            <a class="btn btn-primary" href="/load_file">Загрузить файл</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% for str in table_data: %}
+    <tr>
+        <td>{{ str[0] }}</td>
+        <td>{{ str[1] }}</td>
+        <td>{{ str[2] }}</td>
+        <td>{{ str[3] }}</td>
+        <td>{{ str[4] }}</td>
+        <td>{{ str[5] }}</td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}
