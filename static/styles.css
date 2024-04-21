@@ -11,3 +11,8 @@
  color: #8a716a;
  line-height: 25px;
 }
+.modal{
+width: 25%;
+height: 10%;
+position: absolute
+}
