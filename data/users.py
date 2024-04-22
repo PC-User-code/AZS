@@ -4,7 +4,7 @@ from flask_login import UserMixin
 from flask_wtf import FlaskForm
 from wtforms import EmailField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired
-from .db_session import SqlAlchemyBase
+from data.db_session import SqlAlchemyBase
 from sqlalchemy import orm
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -16,6 +16,8 @@ class User(SqlAlchemyBase, UserMixin):
     email = sqlalchemy.Column(sqlalchemy.String, index=True, unique=True, nullable=False)
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     created_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
+    access = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    user = orm.relationship("Server", back_populates="tranzaction")
 
     def __repr__(self):
         return f"<User> {self.id}, {self.name}, {self.email}"

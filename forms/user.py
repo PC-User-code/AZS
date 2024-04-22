@@ -18,9 +18,9 @@ class RegisterForm(FlaskForm, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.hashed_password, password)
 
+
 class LoginForm(FlaskForm):
     email = EmailField('Почта или никнейм', validators=[DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
     remember_me = BooleanField('Запомнить меня')
     submit = SubmitField('Войти')
-
