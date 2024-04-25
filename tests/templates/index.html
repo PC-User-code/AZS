@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Upload File</h1>
-<div>
-    <h3>Upload</h3>
-    <form action="/upload-file" method="POST"
-          enctype="multipart/form-data">
-        <input type="file" name="file" accept=".txt,.csv" size="1024">
-        <input type="Submit" value="Загрузить">
-    </form>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for message in messages %}
-    {{ message }}</br>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
-</div>
-</body>
+  <body>
+   <h1>Upload File</h1>
+   <p>Welcome to sample flask application by <a href="https://pythonexamples.org/">PythonExamples.org</a>.</p>
+
+   <div>
+     <h3>Upload</h3>
+     <form action = "/upload-file" method = "POST"
+          enctype = "multipart/form-data">
+       <input type="file" name="file">
+       <input type="Submit" value="Upload">
+     </form>
+     <div style="color:orange">{{ message }}</div>
+   </div>
+  {% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+  </body>
 </html>
